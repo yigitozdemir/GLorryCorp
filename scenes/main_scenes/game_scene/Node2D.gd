@@ -24,5 +24,5 @@ func _ready():
 
 func _process(delta):
 	nav_agent.get_next_path_position()
-	print(nav_agent.get_next_path_position())
-	print("Target Reachable: " + str(nav_agent.is_target_reachable()))
+	#print(nav_agent.get_next_path_position())
+	#print("Target Reachable: " + str(nav_agent.is_target_reachable()))
