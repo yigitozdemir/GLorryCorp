@@ -1,5 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://dth7k8v1v1jpg"]
+[gd_scene load_steps=14 format=3 uid="uid://dth7k8v1v1jpg"]
 
+[ext_resource type="Script" path="res://scenes/main_scenes/game_scene/game_scene.gd" id="1_1vlji"]
 [ext_resource type="Texture2D" uid="uid://cieh024wdc3ai" path="res://assets/img/spritesheet.png" id="1_5mxav"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/TileMap.gd" id="2_154vo"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/Camera2D.gd" id="2_pd0ve"]
@@ -56,6 +57,7 @@ position = Vector2(40, 56)
 level = 1
 
 [node name="game_scene" type="Node2D"]
+script = ExtResource("1_1vlji")
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2(2, 0)
@@ -79,6 +81,7 @@ cities = Array[ExtResource("3_hdiht")]([SubResource("Resource_6fxgc"), SubResour
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(326, 167)
 zoom = Vector2(6.685, 6.685)
+process_callback = 0
 script = ExtResource("2_pd0ve")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -94,3 +97,30 @@ avoidance_layers = 0
 avoidance_mask = 0
 debug_enabled = true
 debug_use_custom = true
+
+[node name="ui_canvas" type="CanvasLayer" parent="."]
+
+[node name="city_menu" type="VBoxContainer" parent="ui_canvas"]
+visible = false
+offset_left = 28.0
+offset_top = 50.0
+offset_right = 953.0
+offset_bottom = 555.0
+
+[node name="top_container" type="HBoxContainer" parent="ui_canvas/city_menu"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="lbl_city" type="Label" parent="ui_canvas/city_menu/top_container"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "İzmir"
+
+[node name="btn_close" type="Button" parent="ui_canvas/city_menu/top_container"]
+layout_mode = 2
+text = "Close"
+
+[node name="city_menu" type="TabContainer" parent="ui_canvas/city_menu"]
+layout_mode = 2
+
+[connection signal="button_up" from="ui_canvas/city_menu/top_container/btn_close" to="." method="_on_btn_close_button_up"]

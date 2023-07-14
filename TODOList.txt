@@ -1,6 +1,8 @@
 V0.1
 	+ Three cities to be added
 	+ City Names above cities
+	+ City menu opens when user clicks to a city
+	- City resources
 	- Bus goes between cities
 	- Bus changes rotation with movement
 

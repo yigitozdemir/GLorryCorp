@@ -12,7 +12,9 @@ func _input(event):
 		var pos = get_viewport().canvas_transform.affine_inverse() * (event.position)
 		var tile_pos = Vector2(int(pos.x / 8), int(pos.y / 8))
 		var clicked_city = search_city(tile_pos)
-		print(clicked_city)
+		if clicked_city != null:
+			get_parent().show_city_menu(clicked_city)
+			pass
 
 func search_city(tile_pos): ## search city in cities dictionary from cities list
 	for city in cities:
