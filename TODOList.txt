@@ -1,5 +1,5 @@
 V0.1
-	- Three cities to be added
+	+ Three cities to be added
 	+ City Names above cities
 	- Bus goes between cities
 	- Bus changes rotation with movement
