@@ -1,0 +1,14 @@
+V0.1
+	- Three cities to be added
+	+ City Names above cities
+	- Bus goes between cities
+	- Bus changes rotation with movement
+
+V0.2
+	- Multi map management
+
+V0.3
+
+V0.4
+
+V0.5
