@@ -2,9 +2,15 @@ V0.1
 	+ Three cities to be added
 	+ City Names above cities
 	+ City menu opens when user clicks to a city
-	- City resources
-	- Bus goes between cities
-	- Bus changes rotation with movement
+	+ City resources
+	- Display city level with city name
+	- Display city resources in city menu
+	- City demands
+	- Display city demands in city menu
+	- Buy a lorry
+	- Lorry goes between cities
+	- Lorry carries resources up to its capacity
+	- Lorry changes rotation with movement
 
 V0.2
 	- Multi map management
