@@ -9,6 +9,9 @@ var _selected_city: City = null: get = get_selected_city, set = set_selected_cit
 @export var res_coal_label: Label
 @export var res_iron_label: Label
 @export var res_wf_label: Label
+@export var dem_coal_label: Label
+@export var dem_iron_label: Label
+@export var dem_wf_label: Label
 
 ## method to show city menu and assign selected city
 func show_city_menu(city: City) -> void:
@@ -18,6 +21,10 @@ func show_city_menu(city: City) -> void:
 	res_coal_label.text = str(city.res_coal)
 	res_iron_label.text = str(city.res_iron)
 	res_wf_label.text   = str(city.res_workforce)
+	dem_coal_label.text = str(city.demand_coal)
+	dem_iron_label.text = str(city.demand_iron)
+	dem_wf_label.text = str(city.demand_workforce)
+	
 ## method to hide city menu and clear selected city
 func hide_city_menu() -> void:
 	$ui_canvas/city_menu.hide()

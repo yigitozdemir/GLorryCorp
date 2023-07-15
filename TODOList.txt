@@ -6,7 +6,7 @@ V0.1
 	+ 5 Display city level with city name
 	+ 6 Display city resources in city menu
 	+ 7 City demands
-	- Display city demands in city menu
+	+ 8 Display city demands in city menu
 	- Buy a lorry
 	- Lorry goes between cities
 	- Lorry carries resources up to its capacity
