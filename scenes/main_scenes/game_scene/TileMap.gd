@@ -25,7 +25,7 @@ func search_city(tile_pos): ## search city in cities dictionary from cities list
 func _create_city_name_labels() -> void:
 	for city in cities:
 		var label: Label = Label.new()
-		label.text = city.name
+		label.text = city.name + " - " + str(city.level)
 		label.position = Vector2(city.position.x * tile_size - 12, city.position.y * tile_size - 20)
 		#label.add_theme_font_size_override("size", 22)
 		add_child(label)

@@ -1,9 +1,9 @@
 V0.1
-	+ Three cities to be added
-	+ City Names above cities
-	+ City menu opens when user clicks to a city
-	+ City resources
-	- Display city level with city name
+	+ 1 Three cities to be added
+	+ 2 City Names above cities
+	+ 3 City menu opens when user clicks to a city
+	+ 4 City resources
+	+ 5 Display city level with city name
 	- Display city resources in city menu
 	- City demands
 	- Display city demands in city menu
