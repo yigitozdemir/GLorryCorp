@@ -43,34 +43,37 @@ script = ExtResource("3_hdiht")
 name = "İzmir"
 position = Vector2(35, 19)
 level = 1
-res_coal = 0
-res_iron = 0
-res_workforce = 0
+res_coal = 2
+res_iron = 1
+res_workforce = 4
 
 [sub_resource type="Resource" id="Resource_p0jd3"]
 script = ExtResource("3_hdiht")
 name = "Manisa"
 position = Vector2(69, 23)
 level = 1
-res_coal = 0
-res_iron = 0
-res_workforce = 0
+res_coal = 3
+res_iron = 1
+res_workforce = 2
 
 [sub_resource type="Resource" id="Resource_mwnjm"]
 script = ExtResource("3_hdiht")
 name = "Aydın"
 position = Vector2(40, 56)
 level = 1
-res_coal = 0
-res_iron = 0
-res_workforce = 0
+res_coal = 1
+res_iron = 4
+res_workforce = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y08lc"]
 atlas = ExtResource("1_5mxav")
 region = Rect2(248, 0, 8, 8)
 
-[node name="game_scene" type="Node2D"]
+[node name="game_scene" type="Node2D" node_paths=PackedStringArray("res_coal_label", "res_iron_label", "res_wf_label")]
 script = ExtResource("1_1vlji")
+res_coal_label = NodePath("ui_canvas/city_menu/city_menu/Resources/HBoxContainer/coal/Label")
+res_iron_label = NodePath("ui_canvas/city_menu/city_menu/Resources/HBoxContainer/iron/Label")
+res_wf_label = NodePath("ui_canvas/city_menu/city_menu/Resources/HBoxContainer/workforce/Label")
 
 [node name="map" type="TileMap" parent="."]
 position = Vector2(2, 0)
@@ -141,6 +144,45 @@ layout_mode = 2
 text = "Close"
 
 [node name="city_menu" type="TabContainer" parent="ui_canvas/city_menu"]
+layout_mode = 2
+
+[node name="Resources" type="VBoxContainer" parent="ui_canvas/city_menu/city_menu"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ui_canvas/city_menu/city_menu/Resources"]
+layout_mode = 2
+
+[node name="coal" type="HBoxContainer" parent="ui_canvas/city_menu/city_menu/Resources/HBoxContainer"]
+layout_mode = 2
+
+[node name="Coal" type="Label" parent="ui_canvas/city_menu/city_menu/Resources/HBoxContainer/coal"]
+layout_mode = 2
+text = "Coal"
+
+[node name="Label" type="Label" parent="ui_canvas/city_menu/city_menu/Resources/HBoxContainer/coal"]
+layout_mode = 2
+text = "5
+"
+
+[node name="iron" type="HBoxContainer" parent="ui_canvas/city_menu/city_menu/Resources/HBoxContainer"]
+layout_mode = 2
+
+[node name="iron" type="Label" parent="ui_canvas/city_menu/city_menu/Resources/HBoxContainer/iron"]
+layout_mode = 2
+text = "Iron
+"
+
+[node name="Label" type="Label" parent="ui_canvas/city_menu/city_menu/Resources/HBoxContainer/iron"]
+layout_mode = 2
+
+[node name="workforce" type="HBoxContainer" parent="ui_canvas/city_menu/city_menu/Resources/HBoxContainer"]
+layout_mode = 2
+
+[node name="workforce" type="Label" parent="ui_canvas/city_menu/city_menu/Resources/HBoxContainer/workforce"]
+layout_mode = 2
+text = "Workforce"
+
+[node name="Label" type="Label" parent="ui_canvas/city_menu/city_menu/Resources/HBoxContainer/workforce"]
 layout_mode = 2
 
 [connection signal="button_up" from="ui_canvas/city_menu/top_container/btn_close" to="." method="_on_btn_close_button_up"]
