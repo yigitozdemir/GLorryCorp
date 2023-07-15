@@ -46,6 +46,9 @@ level = 1
 res_coal = 2
 res_iron = 1
 res_workforce = 4
+demand_coal = 0
+demand_iron = 0
+demand_workforce = 0
 
 [sub_resource type="Resource" id="Resource_p0jd3"]
 script = ExtResource("3_hdiht")
@@ -55,6 +58,9 @@ level = 1
 res_coal = 3
 res_iron = 1
 res_workforce = 2
+demand_coal = 0
+demand_iron = 0
+demand_workforce = 0
 
 [sub_resource type="Resource" id="Resource_mwnjm"]
 script = ExtResource("3_hdiht")
@@ -64,6 +70,9 @@ level = 1
 res_coal = 1
 res_iron = 4
 res_workforce = 1
+demand_coal = 0
+demand_iron = 0
+demand_workforce = 0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y08lc"]
 atlas = ExtResource("1_5mxav")

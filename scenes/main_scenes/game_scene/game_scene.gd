@@ -1,6 +1,9 @@
 extends Node2D
 ## this is the selected city
 var _selected_city: City = null: get = get_selected_city, set = set_selected_city
+@export_category("General Game Stuff")
+@export var game_year: int
+@export var game_month: int
 
 @export_category("UI References")
 @export var res_coal_label: Label

@@ -4,13 +4,14 @@ V0.1
 	+ 3 City menu opens when user clicks to a city
 	+ 4 City resources
 	+ 5 Display city level with city name
-	- Display city resources in city menu
-	- City demands
+	+ 6 Display city resources in city menu
+	+ 7 City demands
 	- Display city demands in city menu
 	- Buy a lorry
 	- Lorry goes between cities
 	- Lorry carries resources up to its capacity
 	- Lorry changes rotation with movement
+	- Mouse scroll button drag camera
 
 V0.2
 	- Multi map management
