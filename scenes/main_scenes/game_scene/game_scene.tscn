@@ -1,11 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://dth7k8v1v1jpg"]
+[gd_scene load_steps=15 format=3 uid="uid://dth7k8v1v1jpg"]
 
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/game_scene.gd" id="1_1vlji"]
 [ext_resource type="Texture2D" uid="uid://cieh024wdc3ai" path="res://assets/img/spritesheet.png" id="1_5mxav"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/TileMap.gd" id="2_154vo"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/Camera2D.gd" id="2_pd0ve"]
-[ext_resource type="Script" path="res://scenes/main_scenes/game_scene/Node2D.gd" id="2_ptjbf"]
 [ext_resource type="Script" path="res://resources/City.gd" id="3_hdiht"]
+[ext_resource type="Script" path="res://scenes/lorry/Lorry.gd" id="5_1jh0w"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_e275a"]
 vertices = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
@@ -56,10 +56,14 @@ name = "Aydın"
 position = Vector2(40, 56)
 level = 1
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_y08lc"]
+atlas = ExtResource("1_5mxav")
+region = Rect2(248, 0, 8, 8)
+
 [node name="game_scene" type="Node2D"]
 script = ExtResource("1_1vlji")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="map" type="TileMap" parent="."]
 position = Vector2(2, 0)
 tile_set = SubResource("TileSet_20yly")
 cell_quadrant_size = 8
@@ -78,17 +82,15 @@ layer_1/tile_data = PackedInt32Array(458766, 65536, 2, 524302, 65536, 2, 589838,
 script = ExtResource("2_154vo")
 cities = Array[ExtResource("3_hdiht")]([SubResource("Resource_6fxgc"), SubResource("Resource_p0jd3"), SubResource("Resource_mwnjm")])
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(326, 167)
-zoom = Vector2(6.685, 6.685)
-process_callback = 0
-script = ExtResource("2_pd0ve")
+[node name="container_lorry" type="Node2D" parent="."]
+z_index = 1
 
-[node name="Node2D" type="Node2D" parent="."]
+[node name="Lorry" type="Node2D" parent="container_lorry" node_paths=PackedStringArray("map")]
 position = Vector2(285, 156)
-script = ExtResource("2_ptjbf")
+script = ExtResource("5_1jh0w")
+map = NodePath("../../map")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Node2D"]
+[node name="nav_agent" type="NavigationAgent2D" parent="container_lorry/Lorry"]
 path_desired_distance = 4.0
 target_desired_distance = 2.0
 radius = 5.0
@@ -97,6 +99,15 @@ avoidance_layers = 0
 avoidance_mask = 0
 debug_enabled = true
 debug_use_custom = true
+
+[node name="sprite" type="Sprite2D" parent="container_lorry/Lorry"]
+texture = SubResource("AtlasTexture_y08lc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(326, 167)
+zoom = Vector2(6.685, 6.685)
+process_callback = 0
+script = ExtResource("2_pd0ve")
 
 [node name="ui_canvas" type="CanvasLayer" parent="."]
 
