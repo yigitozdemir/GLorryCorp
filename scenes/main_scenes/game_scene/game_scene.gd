@@ -20,6 +20,7 @@ func buy_lorry(modal_name: String, to_location: City) -> void:
 	var lorry_scene_path = Catalog.LorryList[modal_name]
 	var loaded_lorry_scene = load(lorry_scene_path)
 	var lorry_instance = loaded_lorry_scene.instantiate()
+	lorry_instance.at_city_name = get_selected_city().name
 	container_lorry.add_child(lorry_instance)
 	hide_city_menu()
 

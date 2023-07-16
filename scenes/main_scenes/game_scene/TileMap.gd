@@ -16,12 +16,21 @@ func _input(event):
 			get_parent().show_city_menu(clicked_city)
 			pass
 
+# search a city with a name
+func get_city_by_name(name: String) -> City:
+	for city in cities:
+		if city.name == name: 
+			return city
+	return null
+	pass
+	
 func search_city(tile_pos): ## search city in cities dictionary from cities list
 	for city in cities:
 		if city.position == tile_pos:
 			return city
 	return null
-
+	pass
+	
 func _create_city_name_labels() -> void:
 	for city in cities:
 		var label: Label = Label.new()
