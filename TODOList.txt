@@ -13,7 +13,7 @@ V0.1
 	+ 12 Calculate the target localtion
 	+ 13 Lorry goes between cities
 	+ Lorry carries resources up to its capacity
-	- Lorry changes rotation with movement
+	+ 14 Lorry changes rotation with movement
 	- Mouse scroll button drag camera
 
 V0.2
