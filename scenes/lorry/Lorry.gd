@@ -16,12 +16,15 @@ var finish_pos = Vector2(558, 188)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("Lorry initiated")
 	#print(nav_agent.get_navigation_map())
 	nav_agent.set_navigation_map(_get_tilemap().get_navigation_map(0))
 	#print(nav_agent.get_navigation_map())
 	NavigationServer2D.map_force_update(nav_agent.get_navigation_map())
 	NavigationServer2D.map_set_active(nav_agent.get_navigation_map(), true)
-	
+	pass
+
+func set_target(target_position: Vector2) -> void:
 	nav_agent.target_position = finish_pos
 	nav_agent.get_next_path_position()
 	#print(nav_agent.get_next_path_position())
@@ -30,7 +33,7 @@ func _ready():
 	var asd = nav_agent.get_current_navigation_path()
 	for c in asd:
 		print(c)
-	pass # Replace with function body.
+	pass
 
 func _process(_delta):
 	nav_agent.get_next_path_position()

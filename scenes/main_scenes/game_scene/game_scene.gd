@@ -13,6 +13,16 @@ var _selected_city: City = null: get = get_selected_city, set = set_selected_cit
 @export var dem_iron_label: Label
 @export var dem_wf_label: Label
 
+@export_category("Container References")
+@export var container_lorry: Node2D
+
+func buy_lorry(modal_name: String, to_location: City) -> void:
+	var lorry_scene_path = Catalog.LorryList[modal_name]
+	var loaded_lorry_scene = load(lorry_scene_path)
+	var lorry_instance = loaded_lorry_scene.instantiate()
+	container_lorry.add_child(lorry_instance)
+	hide_city_menu()
+
 ## method to show city menu and assign selected city
 func show_city_menu(city: City) -> void:
 	set_selected_city(city)
@@ -39,3 +49,5 @@ func set_selected_city(_val : City)->void:
 func _on_btn_close_button_up():
 	hide_city_menu()
 	pass # Replace with function body.
+func _buy_lorry_button_event_handler(lorry_modal: String) -> void:
+	buy_lorry(lorry_modal, get_selected_city())

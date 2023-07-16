@@ -15,6 +15,10 @@ run/main_scene="res://scenes/main_scenes/game_scene/game_scene.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Catalog="*res://static/Catalog.gd"
+
 [display]
 
 window/stretch/mode="viewport"
