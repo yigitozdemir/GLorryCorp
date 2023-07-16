@@ -28,6 +28,7 @@ enum ResourceType {
 @export var type: int
 @export var capacity: int
 @export var status: TruckStatus = TruckStatus.Idle
+@export var speed: float = 2
 
 @export_category("Containing resources")
 @export var con_coal: int
@@ -36,6 +37,7 @@ enum ResourceType {
 
 @export_category("Location information")
 @export var at_city_name: String
+@export var going_to_city: City ## the city lorry headed for
 
 var finish_pos = Vector2(558, 188)
 
@@ -68,7 +70,7 @@ func set_target(target_position: Vector2) -> void:
 
 ## idle -> loading -> CalculatingDemand -> moving -> dumping -> idle
 ## states will switch in this circles
-func _process(_delta):
+func _process(delta):
 	#nav_agent.get_next_path_position()
 	#print(nav_agent.get_next_path_position())
 	#print("Target Reachable: " + str(nav_agent.is_target_reachable()))
@@ -125,6 +127,35 @@ func _process(_delta):
 			
 		#decide load
 		pass
+	
+	if status == TruckStatus.CalculatingDemand:
+		for city in map.cities:
+			if city.name != at_city_name:
+				if con_coal > 0 and city.demand_coal > 0:
+					going_to_city = city
+					status = TruckStatus.Moving
+					print("target is : " + city.name + " containing coal")
+					return
+				if con_iron > 0 and city.demand_iron > 0:
+					going_to_city = city
+					status = TruckStatus.Moving
+					print("target is : " + city.name + " containing iron")
+					return
+				if con_workforce > 0 and city.demand_workforce:
+					going_to_city = city
+					status = TruckStatus.Moving
+					print("target is : " + city.name + " containing workforce")
+					return
+			pass
+		pass
+	
+	if status == TruckStatus.Moving:
+		nav_agent.target_position = Vector2(going_to_city.position.x * 8 + 4, going_to_city.position.y * 8 + 4)
+		nav_agent.get_next_path_position()
+		var new_velocity: Vector2 = (nav_agent.get_next_path_position() - position).normalized() * speed * delta
+		nav_agent.set_velocity(new_velocity)
+		_on_nav_agent_velocity_computed(new_velocity)
+		pass
 	pass
 	
 func _dump_containement_data():
@@ -134,3 +165,9 @@ func _dump_containement_data():
 ## returns the TileMap used in this game
 func _get_tilemap() -> TileMap:
 	return get_tree().root.get_node("game_scene").get_node("map")
+
+
+func _on_nav_agent_velocity_computed(safe_velocity):
+	#print("event is calling")
+	global_position = global_position.move_toward(global_position + safe_velocity, speed)
+	pass # Replace with function body.

@@ -58,7 +58,7 @@ res_coal = 3
 res_iron = 1
 res_workforce = 2
 demand_coal = 0
-demand_iron = 0
+demand_iron = 1
 demand_workforce = 0
 
 [sub_resource type="Resource" id="Resource_mwnjm"]
@@ -69,9 +69,9 @@ level = 1
 res_coal = 1
 res_iron = 4
 res_workforce = 1
-demand_coal = 0
-demand_iron = 0
-demand_workforce = 0
+demand_coal = 1
+demand_iron = 2
+demand_workforce = 1
 
 [node name="game_scene" type="Node2D" node_paths=PackedStringArray("res_coal_label", "res_iron_label", "res_wf_label", "dem_coal_label", "dem_iron_label", "dem_wf_label", "container_lorry")]
 script = ExtResource("1_1vlji")

@@ -8,7 +8,6 @@ atlas = ExtResource("2_wc65f")
 region = Rect2(248, 0, 8, 8)
 
 [node name="Lorry" type="Node2D"]
-position = Vector2(285, 156)
 script = ExtResource("1_gfojr")
 modal = "Lorry1"
 brand = "Yercedes"
@@ -16,12 +15,13 @@ model = "1"
 year = 1982
 type = 1
 capacity = 12
+speed = 10.0
 
 [node name="nav_agent" type="NavigationAgent2D" parent="."]
 path_desired_distance = 4.0
 target_desired_distance = 2.0
 radius = 5.0
-max_speed = 2.0
+max_speed = 10.0
 avoidance_layers = 0
 avoidance_mask = 0
 debug_enabled = true
@@ -29,3 +29,5 @@ debug_use_custom = true
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_y08lc")
+
+[connection signal="velocity_computed" from="nav_agent" to="." method="_on_nav_agent_velocity_computed"]
