@@ -1,11 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dth7k8v1v1jpg"]
+[gd_scene load_steps=13 format=3 uid="uid://dth7k8v1v1jpg"]
 
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/game_scene.gd" id="1_1vlji"]
 [ext_resource type="Texture2D" uid="uid://cieh024wdc3ai" path="res://assets/img/spritesheet.png" id="1_5mxav"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/TileMap.gd" id="2_154vo"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/Camera2D.gd" id="2_pd0ve"]
 [ext_resource type="Script" path="res://resources/City.gd" id="3_hdiht"]
-[ext_resource type="PackedScene" uid="uid://q3auvneus5ro" path="res://scenes/lorry/Lorry.tscn" id="5_2brjd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_e275a"]
 vertices = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
@@ -104,8 +103,6 @@ cities = Array[ExtResource("3_hdiht")]([SubResource("Resource_6fxgc"), SubResour
 
 [node name="container_lorry" type="Node2D" parent="."]
 z_index = 1
-
-[node name="Lorry" parent="container_lorry" instance=ExtResource("5_2brjd")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(326, 167)
