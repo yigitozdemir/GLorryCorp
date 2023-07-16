@@ -153,6 +153,7 @@ func _process(delta):
 		nav_agent.target_position = Vector2(going_to_city.position.x * 8 + 4, going_to_city.position.y * 8 + 4)
 		nav_agent.get_next_path_position()
 		var new_velocity: Vector2 = (nav_agent.get_next_path_position() - position).normalized() * speed * delta
+		look_at(nav_agent.get_next_path_position())
 		nav_agent.set_velocity(new_velocity)
 		_on_nav_agent_velocity_computed(new_velocity)
 		pass
