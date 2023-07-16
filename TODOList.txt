@@ -7,7 +7,10 @@ V0.1
 	+ 6 Display city resources in city menu
 	+ 7 City demands
 	+ 8 Display city demands in city menu
-	- Buy a lorry
+	- Turn Lorry into a scene as a resusable asset
+	- Implement to buy a lorry
+	- Calculate amount of resource Lorry load
+	- Calculate the target localtion
 	- Lorry goes between cities
 	- Lorry carries resources up to its capacity
 	- Lorry changes rotation with movement

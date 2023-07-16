@@ -16,16 +16,16 @@ var finish_pos = Vector2(558, 188)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print(nav_agent.get_navigation_map())
-	nav_agent.set_navigation_map(map.get_navigation_map(0))
-	print(nav_agent.get_navigation_map())
+	#print(nav_agent.get_navigation_map())
+	nav_agent.set_navigation_map(_get_tilemap().get_navigation_map(0))
+	#print(nav_agent.get_navigation_map())
 	NavigationServer2D.map_force_update(nav_agent.get_navigation_map())
 	NavigationServer2D.map_set_active(nav_agent.get_navigation_map(), true)
 	
 	nav_agent.target_position = finish_pos
 	nav_agent.get_next_path_position()
-	print(nav_agent.get_next_path_position())
-	print("Target Reachable: " + str(nav_agent.is_target_reachable()))
+	#print(nav_agent.get_next_path_position())
+	#print("Target Reachable: " + str(nav_agent.is_target_reachable()))
 	
 	var asd = nav_agent.get_current_navigation_path()
 	for c in asd:
@@ -36,3 +36,7 @@ func _process(_delta):
 	nav_agent.get_next_path_position()
 	#print(nav_agent.get_next_path_position())
 	#print("Target Reachable: " + str(nav_agent.is_target_reachable()))
+
+## returns the TileMap used in this game
+func _get_tilemap() -> TileMap:
+	return get_tree().root.get_node("game_scene").get_node("map")

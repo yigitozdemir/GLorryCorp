@@ -1,11 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dth7k8v1v1jpg"]
+[gd_scene load_steps=14 format=3 uid="uid://dth7k8v1v1jpg"]
 
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/game_scene.gd" id="1_1vlji"]
 [ext_resource type="Texture2D" uid="uid://cieh024wdc3ai" path="res://assets/img/spritesheet.png" id="1_5mxav"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/TileMap.gd" id="2_154vo"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/Camera2D.gd" id="2_pd0ve"]
 [ext_resource type="Script" path="res://resources/City.gd" id="3_hdiht"]
-[ext_resource type="Script" path="res://scenes/lorry/Lorry.gd" id="5_1jh0w"]
+[ext_resource type="PackedScene" uid="uid://q3auvneus5ro" path="res://scenes/lorry/Lorry.tscn" id="5_2brjd"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_e275a"]
 vertices = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
@@ -74,10 +74,6 @@ demand_coal = 0
 demand_iron = 0
 demand_workforce = 0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y08lc"]
-atlas = ExtResource("1_5mxav")
-region = Rect2(248, 0, 8, 8)
-
 [node name="game_scene" type="Node2D" node_paths=PackedStringArray("res_coal_label", "res_iron_label", "res_wf_label", "dem_coal_label", "dem_iron_label", "dem_wf_label")]
 script = ExtResource("1_1vlji")
 res_coal_label = NodePath("ui_canvas/city_menu/city_menu/Resources/res_con/coal/Label")
@@ -109,23 +105,7 @@ cities = Array[ExtResource("3_hdiht")]([SubResource("Resource_6fxgc"), SubResour
 [node name="container_lorry" type="Node2D" parent="."]
 z_index = 1
 
-[node name="Lorry" type="Node2D" parent="container_lorry" node_paths=PackedStringArray("map")]
-position = Vector2(285, 156)
-script = ExtResource("5_1jh0w")
-map = NodePath("../../map")
-
-[node name="nav_agent" type="NavigationAgent2D" parent="container_lorry/Lorry"]
-path_desired_distance = 4.0
-target_desired_distance = 2.0
-radius = 5.0
-max_speed = 2.0
-avoidance_layers = 0
-avoidance_mask = 0
-debug_enabled = true
-debug_use_custom = true
-
-[node name="sprite" type="Sprite2D" parent="container_lorry/Lorry"]
-texture = SubResource("AtlasTexture_y08lc")
+[node name="Lorry" parent="container_lorry" instance=ExtResource("5_2brjd")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(326, 167)
@@ -136,6 +116,7 @@ script = ExtResource("2_pd0ve")
 [node name="ui_canvas" type="CanvasLayer" parent="."]
 
 [node name="city_menu" type="VBoxContainer" parent="ui_canvas"]
+visible = false
 offset_left = 28.0
 offset_top = 50.0
 offset_right = 953.0
