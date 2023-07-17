@@ -30,4 +30,5 @@ debug_use_custom = true
 [node name="sprite" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_y08lc")
 
+[connection signal="navigation_finished" from="nav_agent" to="." method="_on_nav_agent_navigation_finished"]
 [connection signal="velocity_computed" from="nav_agent" to="." method="_on_nav_agent_velocity_computed"]

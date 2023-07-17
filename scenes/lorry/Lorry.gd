@@ -156,6 +156,8 @@ func _process(delta):
 		look_at(nav_agent.get_next_path_position())
 		nav_agent.set_velocity(new_velocity)
 		_on_nav_agent_velocity_computed(new_velocity)
+		
+	if status == TruckStatus.Dumping:
 		pass
 	pass
 	
@@ -171,4 +173,9 @@ func _get_tilemap() -> TileMap:
 func _on_nav_agent_velocity_computed(safe_velocity):
 	#print("event is calling")
 	global_position = global_position.move_toward(global_position + safe_velocity, speed)
+	pass # Replace with function body.
+
+
+func _on_nav_agent_navigation_finished():
+	status = TruckStatus.Dumping
 	pass # Replace with function body.
