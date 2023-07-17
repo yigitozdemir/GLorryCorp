@@ -15,8 +15,8 @@ V0.1
 	+ Lorry carries resources up to its capacity
 	+ 14 Lorry changes rotation with movement
 	+ 15 Catch lorry arrives to a city event
-	- Lorry dumps load to city
-	- Dumped goods substracts from demand
+	+ Lorry dumps load to city
+	+ Dumped goods substracts from demand
 	- Resource production speed in cities
 	- Resource demand speed in cities
 	- Add production to city warehouse periodically

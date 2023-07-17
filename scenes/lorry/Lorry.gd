@@ -158,7 +158,15 @@ func _process(delta):
 		_on_nav_agent_velocity_computed(new_velocity)
 		
 	if status == TruckStatus.Dumping:
-		pass
+		going_to_city.demand_coal -= con_coal
+		going_to_city.demand_iron -= con_iron
+		going_to_city.demand_workforce -= con_workforce
+		
+		con_coal = 0
+		con_iron = 0
+		con_workforce = 0
+		
+		status = TruckStatus.Idle
 	pass
 	
 func _dump_containement_data():
