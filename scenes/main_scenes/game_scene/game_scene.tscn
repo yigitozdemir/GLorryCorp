@@ -48,6 +48,16 @@ res_workforce = 4
 demand_coal = 0
 demand_iron = 0
 demand_workforce = 0
+producting_coal = 0
+producting_iron = 0
+producting_workforce = 1
+production_period = 2.5
+since_last_production = 0.0
+demanding_coal = 0
+demanding_iron = 0
+demanding_workforce = 0
+demanding_period = 1.5
+since_last_demand = 0.0
 
 [sub_resource type="Resource" id="Resource_p0jd3"]
 script = ExtResource("3_hdiht")
@@ -60,6 +70,16 @@ res_workforce = 2
 demand_coal = 0
 demand_iron = 1
 demand_workforce = 0
+producting_coal = 0
+producting_iron = 1
+producting_workforce = 0
+production_period = 2.5
+since_last_production = 0.0
+demanding_coal = 0
+demanding_iron = 0
+demanding_workforce = 1
+demanding_period = 1.5
+since_last_demand = 0.0
 
 [sub_resource type="Resource" id="Resource_mwnjm"]
 script = ExtResource("3_hdiht")
@@ -72,6 +92,16 @@ res_workforce = 1
 demand_coal = 1
 demand_iron = 2
 demand_workforce = 1
+producting_coal = 1
+producting_iron = 0
+producting_workforce = 0
+production_period = 1.5
+since_last_production = 0.0
+demanding_coal = 0
+demanding_iron = 1
+demanding_workforce = 0
+demanding_period = 2.5
+since_last_demand = 0.0
 
 [node name="game_scene" type="Node2D" node_paths=PackedStringArray("res_coal_label", "res_iron_label", "res_wf_label", "dem_coal_label", "dem_iron_label", "dem_wf_label", "container_lorry")]
 script = ExtResource("1_1vlji")
