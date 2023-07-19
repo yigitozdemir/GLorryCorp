@@ -5,9 +5,9 @@ class_name player_resources
 @export var token_val_label: Label
 
 ## amount of money player has
-var _money: int = 0: get = get_money, set = set_money
+var _money: int = 100: get = get_money, set = set_money
 ## special token is like money but more valuable as problem solver
-var _token: int = 0: get = get_token, set = set_token
+var _token: int = 5: get = get_token, set = set_token
 func get_token() -> int:
 	return _token
 func set_token(val: int) -> void:

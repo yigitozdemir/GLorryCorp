@@ -20,6 +20,12 @@ func buy_lorry(modal_name: String, to_location: City) -> void:
 	var lorry_scene_path = Catalog.LorryList[modal_name]
 	var loaded_lorry_scene = load(lorry_scene_path)
 	var lorry_instance = loaded_lorry_scene.instantiate()
+	if get_player_resources().get_money() < lorry_instance.cost:
+		print("Player does not have enough money to buy")
+		lorry_instance.queue_free()
+		## TODO add a error message lightbox
+		return
+	get_player_resources().set_money(get_player_resources().get_money() - lorry_instance.cost)
 	lorry_instance.position = Vector2(to_location.position.x * 8 + 4, to_location.position.y * 8 + 4)
 	lorry_instance.at_city_name = get_selected_city().name
 	container_lorry.add_child(lorry_instance)
@@ -53,3 +59,6 @@ func _on_btn_close_button_up():
 	pass # Replace with function body.
 func _buy_lorry_button_event_handler(lorry_modal: String) -> void:
 	buy_lorry(lorry_modal, get_selected_city())
+## get player resources global object
+func get_player_resources() -> player_resources:
+	return get_tree().root.get_node("game_scene").get_node("player_resources")

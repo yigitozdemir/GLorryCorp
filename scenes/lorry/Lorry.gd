@@ -29,6 +29,7 @@ enum ResourceType {
 @export var capacity: int
 @export var status: TruckStatus = TruckStatus.Idle
 @export var speed: float = 2
+@export var cost: int = 100
 
 @export_category("Containing resources")
 @export var con_coal: int
@@ -200,6 +201,6 @@ func _on_nav_agent_navigation_finished():
 	status = TruckStatus.Dumping
 	pass # Replace with function body.
 
-## 
+## get player resources global object
 func get_player_resources() -> player_resources:
 	return get_tree().root.get_node("game_scene").get_node("player_resources")
