@@ -13,5 +13,5 @@ func set_token(val: int) -> void:
 func get_money() -> int:
 	return _money
 func set_money(val: int) -> void:
-	print("Money updated: " + str(_money))
 	_money = val
+	print("Money updated: " + str(_money))

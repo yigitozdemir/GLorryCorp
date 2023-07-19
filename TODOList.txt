@@ -22,7 +22,7 @@ V0.1
 	+ 20 Add production to city warehouse periodically
 	+ 21 Calculate distance when lorry's travel starts
 	+ 22 Initialize player's money and bonus manager
-	- When lorry arrives to destination, player gets paid
+	+ 23 When lorry arrives to destination, player gets paid
 	- Add player resources to top left of UI
 	- Update UI when player receives payment
 	- Buying a lorry costs money

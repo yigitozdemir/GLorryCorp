@@ -172,8 +172,8 @@ func _process(delta):
 		going_to_city.demand_iron -= con_iron
 		going_to_city.demand_workforce -= con_workforce
 		
-		print("lorry came: " + str(destination_distance))
-		
+		#print("lorry came: " + str(destination_distance))
+		get_player_resources().set_money(get_player_resources().get_money() + (destination_distance * cost_per_distance))
 		con_coal = 0
 		con_iron = 0
 		con_workforce = 0
@@ -199,3 +199,7 @@ func _on_nav_agent_velocity_computed(safe_velocity):
 func _on_nav_agent_navigation_finished():
 	status = TruckStatus.Dumping
 	pass # Replace with function body.
+
+## 
+func get_player_resources() -> player_resources:
+	return get_tree().root.get_node("game_scene").get_node("player_resources")
