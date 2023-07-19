@@ -26,6 +26,7 @@ V0.1
 	+ 24 Add player resources to top left of UI
 	+ 25 Update UI when player receives payment
 	+ 26 Buying a lorry costs money
+	
 	- Mouse scroll button drag camera
 
 V0.2

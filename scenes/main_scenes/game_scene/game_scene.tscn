@@ -104,7 +104,7 @@ demanding_workforce = 0
 demanding_period = 2.5
 since_last_demand = 0.0
 
-[node name="game_scene" type="Node2D" node_paths=PackedStringArray("res_coal_label", "res_iron_label", "res_wf_label", "dem_coal_label", "dem_iron_label", "dem_wf_label", "container_lorry")]
+[node name="game_scene" type="Node2D" node_paths=PackedStringArray("res_coal_label", "res_iron_label", "res_wf_label", "dem_coal_label", "dem_iron_label", "dem_wf_label", "menu_container", "container_lorry")]
 script = ExtResource("1_1vlji")
 res_coal_label = NodePath("ui_canvas/city_menu/city_menu/Resources/res_con/coal/Label")
 res_iron_label = NodePath("ui_canvas/city_menu/city_menu/Resources/res_con/iron/Label")
@@ -112,6 +112,7 @@ res_wf_label = NodePath("ui_canvas/city_menu/city_menu/Resources/res_con/workfor
 dem_coal_label = NodePath("ui_canvas/city_menu/city_menu/Resources/dem_con/coal/Label")
 dem_iron_label = NodePath("ui_canvas/city_menu/city_menu/Resources/dem_con/iron/Label")
 dem_wf_label = NodePath("ui_canvas/city_menu/city_menu/Resources/dem_con/workfoce/Label")
+menu_container = NodePath("ui_canvas/menu_container")
 container_lorry = NodePath("container_lorry")
 
 [node name="player_resources" type="Node" parent="." node_paths=PackedStringArray("money_val_label", "token_val_label")]
@@ -286,5 +287,45 @@ text = "Token:"
 layout_mode = 2
 text = "0"
 
+[node name="menu_button_container" type="HBoxContainer" parent="ui_canvas"]
+offset_left = 1058.0
+offset_top = 21.0
+offset_right = 1111.0
+offset_bottom = 61.0
+
+[node name="btn_menu" type="Button" parent="ui_canvas/menu_button_container"]
+layout_mode = 2
+text = "Menu"
+
+[node name="menu_container" type="VBoxContainer" parent="ui_canvas"]
+visible = false
+offset_left = 457.0
+offset_top = 146.0
+offset_right = 750.0
+offset_bottom = 507.0
+
+[node name="Label" type="Label" parent="ui_canvas/menu_container"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+text = "Menu"
+horizontal_alignment = 1
+
+[node name="btn_save" type="Button" parent="ui_canvas/menu_container"]
+process_mode = 3
+layout_mode = 2
+text = "Save"
+
+[node name="btn_load" type="Button" parent="ui_canvas/menu_container"]
+process_mode = 3
+layout_mode = 2
+text = "Load"
+
+[node name="btn_close" type="Button" parent="ui_canvas/menu_container"]
+process_mode = 3
+layout_mode = 2
+text = "Close Menu"
+
 [connection signal="button_up" from="ui_canvas/city_menu/top_container/btn_close" to="." method="_on_btn_close_button_up"]
 [connection signal="button_up" from="ui_canvas/city_menu/city_menu/Resources/buy_menu/buy_lorry/buy_lorry_1" to="." method="_buy_lorry_button_event_handler" binds= ["Lorry1"]]
+[connection signal="button_up" from="ui_canvas/menu_button_container/btn_menu" to="." method="_on_btn_menu_button_up"]
+[connection signal="button_up" from="ui_canvas/menu_container/btn_close" to="." method="_on_btn_close_m_button_up"]

@@ -12,6 +12,7 @@ var _selected_city: City = null: get = get_selected_city, set = set_selected_cit
 @export var dem_coal_label: Label
 @export var dem_iron_label: Label
 @export var dem_wf_label: Label
+@export var menu_container: VBoxContainer
 
 @export_category("Container References")
 @export var container_lorry: Node2D
@@ -59,6 +60,17 @@ func _on_btn_close_button_up():
 	pass # Replace with function body.
 func _buy_lorry_button_event_handler(lorry_modal: String) -> void:
 	buy_lorry(lorry_modal, get_selected_city())
+	pass
 ## get player resources global object
 func get_player_resources() -> player_resources:
 	return get_tree().root.get_node("game_scene").get_node("player_resources")
+
+
+func _on_btn_menu_button_up():
+	Engine.time_scale = 0
+	menu_container.show()
+	pass 
+func _on_btn_close_m_button_up():
+	menu_container.hide()
+	Engine.time_scale = 1
+	pass 
