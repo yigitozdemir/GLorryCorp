@@ -13,6 +13,7 @@ var _selected_city: City = null: get = get_selected_city, set = set_selected_cit
 @export var dem_iron_label: Label
 @export var dem_wf_label: Label
 @export var menu_container: VBoxContainer
+@export var save_file_dialog: FileDialog
 
 @export_category("Container References")
 @export var container_lorry: Node2D
@@ -74,3 +75,19 @@ func _on_btn_close_m_button_up():
 	menu_container.hide()
 	Engine.time_scale = 1
 	pass 
+## function to save game
+func _on_btn_save_button_up():
+	menu_container.hide()
+	save_file_dialog.show()
+	pass
+
+## create user://saves folder on first run if not exists
+func _on_save_file_dialog_ready():
+	DirAccess.make_dir_recursive_absolute("user://saves")
+	save_file_dialog.set_root_subfolder("user://saves")
+	pass
+## write save data to file
+func _on_save_file_dialog_file_selected(path):
+	print("File selected: " + path)
+	Engine.time_scale = 1
+	pass # Replace with function body.
