@@ -23,8 +23,8 @@ V0.1
 	+ 21 Calculate distance when lorry's travel starts
 	+ 22 Initialize player's money and bonus manager
 	+ 23 When lorry arrives to destination, player gets paid
-	- Add player resources to top left of UI
-	- Update UI when player receives payment
+	+ 24 Add player resources to top left of UI
+	+ 25 Update UI when player receives payment
 	- Buying a lorry costs money
 	- Mouse scroll button drag camera
 

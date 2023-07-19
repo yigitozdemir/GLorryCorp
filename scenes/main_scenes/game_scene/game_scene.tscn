@@ -114,8 +114,10 @@ dem_iron_label = NodePath("ui_canvas/city_menu/city_menu/Resources/dem_con/iron/
 dem_wf_label = NodePath("ui_canvas/city_menu/city_menu/Resources/dem_con/workfoce/Label")
 container_lorry = NodePath("container_lorry")
 
-[node name="player_resources" type="Node" parent="."]
+[node name="player_resources" type="Node" parent="." node_paths=PackedStringArray("money_val_label", "token_val_label")]
 script = ExtResource("2_7bn77")
+money_val_label = NodePath("../ui_canvas/hud_container/money_val_label")
+token_val_label = NodePath("../ui_canvas/hud_container/token_val_label")
 
 [node name="map" type="TileMap" parent="."]
 position = Vector2(2, 0)
@@ -263,6 +265,26 @@ text = "Generic Lorry"
 [node name="buy_lorry_1" type="Button" parent="ui_canvas/city_menu/city_menu/Resources/buy_menu/buy_lorry"]
 layout_mode = 2
 text = "Buy"
+
+[node name="hud_container" type="HBoxContainer" parent="ui_canvas"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="ui_canvas/hud_container"]
+layout_mode = 2
+text = "Money:"
+
+[node name="money_val_label" type="Label" parent="ui_canvas/hud_container"]
+layout_mode = 2
+text = "0"
+
+[node name="Label3" type="Label" parent="ui_canvas/hud_container"]
+layout_mode = 2
+text = "Token:"
+
+[node name="token_val_label" type="Label" parent="ui_canvas/hud_container"]
+layout_mode = 2
+text = "0"
 
 [connection signal="button_up" from="ui_canvas/city_menu/top_container/btn_close" to="." method="_on_btn_close_button_up"]
 [connection signal="button_up" from="ui_canvas/city_menu/city_menu/Resources/buy_menu/buy_lorry/buy_lorry_1" to="." method="_buy_lorry_button_event_handler" binds= ["Lorry1"]]
