@@ -21,7 +21,7 @@ V0.1
 	+ 19 Resource demand speed in cities
 	+ 20 Add production to city warehouse periodically
 	+ 21 Calculate distance when lorry's travel starts
-	- Initialize player's money and bonus manager
+	+ 22 Initialize player's money and bonus manager
 	- When lorry arrives to destination, player gets paid
 	- Add player resources to top left of UI
 	- Update UI when player receives payment

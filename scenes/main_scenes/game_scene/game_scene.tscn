@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dth7k8v1v1jpg"]
+[gd_scene load_steps=14 format=3 uid="uid://dth7k8v1v1jpg"]
 
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/game_scene.gd" id="1_1vlji"]
 [ext_resource type="Texture2D" uid="uid://cieh024wdc3ai" path="res://assets/img/spritesheet.png" id="1_5mxav"]
+[ext_resource type="Script" path="res://scenes/main_scenes/game_scene/player_resources.gd" id="2_7bn77"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/TileMap.gd" id="2_154vo"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/Camera2D.gd" id="2_pd0ve"]
 [ext_resource type="Script" path="res://resources/City.gd" id="3_hdiht"]
@@ -112,6 +113,9 @@ dem_coal_label = NodePath("ui_canvas/city_menu/city_menu/Resources/dem_con/coal/
 dem_iron_label = NodePath("ui_canvas/city_menu/city_menu/Resources/dem_con/iron/Label")
 dem_wf_label = NodePath("ui_canvas/city_menu/city_menu/Resources/dem_con/workfoce/Label")
 container_lorry = NodePath("container_lorry")
+
+[node name="player_resources" type="Node" parent="."]
+script = ExtResource("2_7bn77")
 
 [node name="map" type="TileMap" parent="."]
 position = Vector2(2, 0)
