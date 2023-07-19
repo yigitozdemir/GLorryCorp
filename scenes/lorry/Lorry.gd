@@ -38,6 +38,10 @@ enum ResourceType {
 @export_category("Location information")
 @export var at_city_name: String
 @export var going_to_city: City ## the city lorry headed for
+@export var destination_distance: float ## distance between lorry and destination
+
+@export_category("Monetary")
+@export var cost_per_distance: float = 1.0
 
 var finish_pos = Vector2(558, 188)
 
@@ -135,16 +139,22 @@ func _process(delta):
 					going_to_city = city
 					status = TruckStatus.Moving
 					print("target is : " + city.name + " containing coal")
+					nav_agent.target_position = Vector2(going_to_city.position.x * 8 + 4, going_to_city.position.y * 8 + 4)
+					destination_distance = nav_agent.distance_to_target()
 					return
 				if con_iron > 0 and city.demand_iron > 0:
 					going_to_city = city
 					status = TruckStatus.Moving
 					print("target is : " + city.name + " containing iron")
+					nav_agent.target_position = Vector2(going_to_city.position.x * 8 + 4, going_to_city.position.y * 8 + 4)
+					destination_distance = nav_agent.distance_to_target()
 					return
 				if con_workforce > 0 and city.demand_workforce:
 					going_to_city = city
 					status = TruckStatus.Moving
 					print("target is : " + city.name + " containing workforce")
+					nav_agent.target_position = Vector2(going_to_city.position.x * 8 + 4, going_to_city.position.y * 8 + 4)
+					destination_distance = nav_agent.distance_to_target()
 					return
 			pass
 		pass
@@ -161,6 +171,8 @@ func _process(delta):
 		going_to_city.demand_coal -= con_coal
 		going_to_city.demand_iron -= con_iron
 		going_to_city.demand_workforce -= con_workforce
+		
+		print("lorry came: " + str(destination_distance))
 		
 		con_coal = 0
 		con_iron = 0

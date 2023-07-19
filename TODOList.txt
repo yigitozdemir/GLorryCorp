@@ -20,6 +20,12 @@ V0.1
 	+ 18 Resource production speed in cities
 	+ 19 Resource demand speed in cities
 	+ 20 Add production to city warehouse periodically
+	+ 21 Calculate distance when lorry's travel starts
+	- Initialize player's money and bonus manager
+	- When lorry arrives to destination, player gets paid
+	- Add player resources to top left of UI
+	- Update UI when player receives payment
+	- Buying a lorry costs money
 	- Mouse scroll button drag camera
 
 V0.2
