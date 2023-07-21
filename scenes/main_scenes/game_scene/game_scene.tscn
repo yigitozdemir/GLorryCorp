@@ -126,7 +126,6 @@ token_val_label = NodePath("../ui_canvas/hud_container/token_val_label")
 position = Vector2(2, 0)
 tile_set = SubResource("TileSet_20yly")
 cell_quadrant_size = 8
-navigation_visibility_mode = 1
 format = 2
 layer_0/name = "Road"
 layer_0/z_index = 1

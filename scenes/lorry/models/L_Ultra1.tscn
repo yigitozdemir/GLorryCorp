@@ -25,8 +25,6 @@ radius = 5.0
 max_speed = 10.0
 avoidance_layers = 0
 avoidance_mask = 0
-debug_enabled = true
-debug_use_custom = true
 
 [node name="sprite" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_y08lc")
