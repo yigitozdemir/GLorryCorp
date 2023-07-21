@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://5xd36m2vpr7s"]
+
+[ext_resource type="Script" path="res://scenes/lorry/Lorry.gd" id="1_6ib36"]
+[ext_resource type="Texture2D" uid="uid://cieh024wdc3ai" path="res://assets/img/spritesheet.png" id="2_6j3hv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y08lc"]
+atlas = ExtResource("2_6j3hv")
+region = Rect2(248, 0, 8, 8)
+
+[node name="Lorry" type="Node2D"]
+script = ExtResource("1_6ib36")
+modal = "Lorry1"
+brand = "Yercedes"
+model = "1"
+year = 1982
+type = 1
+capacity = 12
+speed = 10.0
+cost = 50
+
+[node name="nav_agent" type="NavigationAgent2D" parent="."]
+path_desired_distance = 4.0
+target_desired_distance = 2.0
+radius = 5.0
+max_speed = 10.0
+avoidance_layers = 0
+avoidance_mask = 0
+debug_enabled = true
+debug_use_custom = true
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_y08lc")
+
+[connection signal="navigation_finished" from="nav_agent" to="." method="_on_nav_agent_navigation_finished"]
+[connection signal="velocity_computed" from="nav_agent" to="." method="_on_nav_agent_velocity_computed"]

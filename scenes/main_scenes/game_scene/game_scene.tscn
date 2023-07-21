@@ -152,6 +152,7 @@ script = ExtResource("2_pd0ve")
 [node name="ui_canvas" type="CanvasLayer" parent="."]
 
 [node name="city_menu" type="VBoxContainer" parent="ui_canvas"]
+visible = false
 offset_left = 28.0
 offset_top = 50.0
 offset_right = 953.0
