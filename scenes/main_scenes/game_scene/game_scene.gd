@@ -32,7 +32,16 @@ func buy_lorry(modal_name: String, to_location: City) -> void:
 	lorry_instance.at_city_name = get_selected_city().name
 	container_lorry.add_child(lorry_instance)
 	hide_city_menu()
-
+func _process(_delta):
+	# update res & demand amounts on screen live
+	if $ui_canvas/city_menu.visible:
+		res_coal_label.text = str(get_selected_city().res_coal)
+		res_iron_label.text = str(get_selected_city().res_iron)
+		res_wf_label.text   = str(get_selected_city().res_workforce)
+		dem_coal_label.text = str(get_selected_city().demand_coal)
+		dem_iron_label.text = str(get_selected_city().demand_iron)
+		dem_wf_label.text = str(get_selected_city().demand_workforce)
+	pass
 ## method to show city menu and assign selected city
 func show_city_menu(city: City) -> void:
 	set_selected_city(city)

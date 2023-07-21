@@ -27,11 +27,17 @@ V0.1
 	+ 25 Update UI when player receives payment
 	+ 26 Buying a lorry costs money
 	+ 27 In game menu open / close and save buttons
-	- Mouse scroll button drag camera
+	+ 28 Add File dialog
+	+ 29 Stop camera from moving when time stops
+	+ 30 Update resource amount in city menu
+	- Update city menu to make multiple lorry modals buyable
+	- Update project folder structure for multiple lorry scenes
+	- Save lorry statuses on map
+	- Load lorry statuses
 
 V0.2
 	- Multi map management
-
+	- Mouse scroll button drag camera
 V0.3
 
 V0.4
