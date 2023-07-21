@@ -124,6 +124,32 @@ func _on_save_file_dialog_file_selected(path):
 		}
 		save_data.data.lorries.append(lorry_data)
 		pass
+	for c in $map.cities:
+		c = c as City
+		var city_data: Dictionary = {
+			"name": c.name,
+			"position_x": c.position.x,
+			"position_y": c.position.y,
+			"level": c.level,
+			"res_coal": c.res_coal,
+			"res_iron": c.res_iron,
+			"res_workforce": c.res_workforce,
+			"demand_coal": c.demand_coal,
+			"demand_iron": c.demand_iron,
+			"demand_workforce": c.demand_workforce,
+			"producting_coal": c.producting_coal,
+			"producting_iron": c.producting_iron,
+			"producting_workforce": c.producting_workforce,
+			"production_period": c.production_period,
+			"since_last_production": c.since_last_production,
+			"demanding_coal": c.demanding_coal,
+			"demanding_iron": c.demanding_iron,
+			"demanding_workforce": c.demanding_workforce,
+			"demanding_period": c.demanding_period,
+			"since_last_demand": c.since_last_demand
+		}
+		save_data.data.cities.append(city_data)
+		pass
 	var fs = FileAccess.open(path, FileAccess.WRITE)
 	fs.store_string(str(save_data.data))
 	fs.close()
@@ -155,5 +181,26 @@ func _on_open_file_dialog_file_selected(path):
 		lorry_instance.status = l.Status
 		lorry_instance.going_to_city = $map.get_city_by_name(l.going_to_city_name)
 		$container_lorry.add_child(lorry_instance)
+	for c in data.cities:
+		var city: City = $map.get_city_by_name(c.name)
+		city.position.x = c.position_x
+		city.position.y = c.position_y
+		city.level = c.level
+		city.res_coal = c.res_coal
+		city.res_iron = c.res_iron
+		city.res_workforce = c.res_workforce
+		city.demand_coal = c.demand_coal
+		city.demand_iron = c.demand_iron
+		city.demand_workforce = c.demand_workforce
+		city.producting_coal = c.producting_coal
+		city.producting_iron = c.producting_iron
+		city.producting_workforce = c.producting_workforce
+		city.production_period = c.production_period
+		city.since_last_production = c.since_last_production
+		city.demanding_coal = c.demanding_coal
+		city.demanding_iron = c.demanding_iron
+		city.demanding_workforce = c.demanding_workforce
+		city.demanding_period = c.demanding_period
+		city.since_last_demand = c.since_last_demand
 	Engine.time_scale = 1
 	pass # Replace with function body.

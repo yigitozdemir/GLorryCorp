@@ -34,6 +34,8 @@ V0.1
 	+ 32 Update project folder structure for multiple lorry scenes
 	+ 33 Save lorry statuses on map
 	+ 34 Load lorry statuses
+	+ 35 save city statuses
+	+ 36 load city statuses
 
 V0.2
 	- Multi map management
