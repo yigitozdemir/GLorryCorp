@@ -97,6 +97,29 @@ func _on_save_file_dialog_ready():
 	pass
 ## write save data to file
 func _on_save_file_dialog_file_selected(path):
-	print("File selected: " + path)
+	var save_data = SaveDataModel.new()
+	for l in get_node("container_lorry").get_children():
+		l = l as Lorry
+		var lorry_data: Dictionary = {
+			"Modal": l.modal,
+			"Brand": l.brand,
+			"Model": l.model,
+			"Year": l.year,
+			"Type": l.type,
+			"Capacity": l.capacity,
+			"Status": l.status,
+			"Speed": l.speed,
+			"Cost": l.cost,
+			"pos_x": l.position.x,
+			"pos_y": l.position.y,
+			"nav_pos_x": l.get_node("nav_agent").target_position.x,
+			"nav_pos_y": l.get_node("nav_agent").target_position.y,
+		}
+		save_data.data.lorries.append(lorry_data)
+		pass
+	var fs = FileAccess.open(path, FileAccess.WRITE)
+	fs.store_string(str(save_data.data))
+	fs.close()
+	print(save_data.data)
 	Engine.time_scale = 1
 	pass # Replace with function body.
