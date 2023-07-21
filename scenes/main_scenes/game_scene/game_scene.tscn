@@ -152,7 +152,6 @@ script = ExtResource("2_pd0ve")
 [node name="ui_canvas" type="CanvasLayer" parent="."]
 
 [node name="city_menu" type="VBoxContainer" parent="ui_canvas"]
-visible = false
 offset_left = 28.0
 offset_top = 50.0
 offset_right = 953.0
@@ -256,15 +255,27 @@ layout_mode = 2
 
 [node name="buy_menu" type="HBoxContainer" parent="ui_canvas/city_menu/city_menu/Resources"]
 layout_mode = 2
+theme_override_constants/separation = 14
 
 [node name="buy_lorry" type="VBoxContainer" parent="ui_canvas/city_menu/city_menu/Resources/buy_menu"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="ui_canvas/city_menu/city_menu/Resources/buy_menu/buy_lorry"]
 layout_mode = 2
-text = "Generic Lorry"
+text = "Yercedes Lorry 1"
 
 [node name="buy_lorry_1" type="Button" parent="ui_canvas/city_menu/city_menu/Resources/buy_menu/buy_lorry"]
+layout_mode = 2
+text = "Buy"
+
+[node name="second_lorry" type="VBoxContainer" parent="ui_canvas/city_menu/city_menu/Resources/buy_menu"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ui_canvas/city_menu/city_menu/Resources/buy_menu/second_lorry"]
+layout_mode = 2
+text = "SAFF Ultra1"
+
+[node name="buy_saff_ultra1" type="Button" parent="ui_canvas/city_menu/city_menu/Resources/buy_menu/second_lorry"]
 layout_mode = 2
 text = "Buy"
 
@@ -337,6 +348,7 @@ filters = PackedStringArray("*.sav")
 
 [connection signal="button_up" from="ui_canvas/city_menu/top_container/btn_close" to="." method="_on_btn_close_button_up"]
 [connection signal="button_up" from="ui_canvas/city_menu/city_menu/Resources/buy_menu/buy_lorry/buy_lorry_1" to="." method="_buy_lorry_button_event_handler" binds= ["Lorry1"]]
+[connection signal="button_up" from="ui_canvas/city_menu/city_menu/Resources/buy_menu/second_lorry/buy_saff_ultra1" to="." method="_buy_lorry_button_event_handler" binds= ["Ultra1"]]
 [connection signal="button_up" from="ui_canvas/menu_button_container/btn_menu" to="." method="_on_btn_menu_button_up"]
 [connection signal="button_up" from="ui_canvas/menu_container/btn_save" to="." method="_on_btn_save_button_up"]
 [connection signal="button_up" from="ui_canvas/menu_container/btn_close" to="." method="_on_btn_close_m_button_up"]
