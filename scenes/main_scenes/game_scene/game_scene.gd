@@ -14,6 +14,7 @@ var _selected_city: City = null: get = get_selected_city, set = set_selected_cit
 @export var dem_wf_label: Label
 @export var menu_container: VBoxContainer
 @export var save_file_dialog: FileDialog
+@export var open_file_dialog: FileDialog
 
 @export_category("Container References")
 @export var container_lorry: Node2D
@@ -95,6 +96,11 @@ func _on_save_file_dialog_ready():
 	DirAccess.make_dir_recursive_absolute("user://saves")
 	save_file_dialog.set_root_subfolder("user://saves")
 	pass
+## create user://saves folder on first run if not exists
+func _on_open_file_dialog_ready():
+	DirAccess.make_dir_recursive_absolute("user://saves")
+	save_file_dialog.set_root_subfolder("user://saves")
+	pass
 ## write save data to file
 func _on_save_file_dialog_file_selected(path):
 	var save_data = SaveDataModel.new()
@@ -110,6 +116,7 @@ func _on_save_file_dialog_file_selected(path):
 			"Status": l.status,
 			"Speed": l.speed,
 			"Cost": l.cost,
+			"going_to_city_name": l.going_to_city.name,
 			"pos_x": l.position.x,
 			"pos_y": l.position.y,
 			"nav_pos_x": l.get_node("nav_agent").target_position.x,
@@ -121,5 +128,32 @@ func _on_save_file_dialog_file_selected(path):
 	fs.store_string(str(save_data.data))
 	fs.close()
 	print(save_data.data)
+	Engine.time_scale = 1
+	pass # Replace with function body.
+
+
+func _on_btn_load_button_up():
+	menu_container.hide()
+	open_file_dialog.show()
+	pass # Replace with function body.
+
+## load a save file from file system
+func _on_open_file_dialog_file_selected(path):
+	var fs = FileAccess.open(path, FileAccess.READ)
+	var file_data: String = fs.get_file_as_string(path)
+	var data:Dictionary = JSON.parse_string(file_data)
+	fs.close()
+	for l in $container_lorry.get_children():
+		l.queue_free()
+	for l in data.lorries:
+		var lorry_scene_path = Catalog.LorryList[l.Modal]
+		var loaded_lorry_scene = load(lorry_scene_path)
+		var lorry_instance = loaded_lorry_scene.instantiate()
+		lorry_instance.position.x = l.pos_x
+		lorry_instance.position.y = l.pos_y
+		lorry_instance.get_node("nav_agent").target_position = Vector2(l.nav_pos_x, l.nav_pos_y)
+		lorry_instance.status = l.Status
+		lorry_instance.going_to_city = $map.get_city_by_name(l.going_to_city_name)
+		$container_lorry.add_child(lorry_instance)
 	Engine.time_scale = 1
 	pass # Replace with function body.

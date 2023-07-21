@@ -33,7 +33,7 @@ V0.1
 	+ 31 Update city menu to make multiple lorry modals buyable
 	+ 32 Update project folder structure for multiple lorry scenes
 	+ 33 Save lorry statuses on map
-	- Load lorry statuses
+	+ 34 Load lorry statuses
 
 V0.2
 	- Multi map management
