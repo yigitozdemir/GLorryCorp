@@ -15,6 +15,7 @@ var _selected_city: City = null: get = get_selected_city, set = set_selected_cit
 @export var menu_container: VBoxContainer
 @export var save_file_dialog: FileDialog
 @export var open_file_dialog: FileDialog
+@export var date_label: Label
 
 @export_category("Container References")
 @export var container_lorry: Node2D
@@ -203,4 +204,9 @@ func _on_open_file_dialog_file_selected(path):
 		city.demanding_period = c.demanding_period
 		city.since_last_demand = c.since_last_demand
 	Engine.time_scale = 1
+	pass # Replace with function body.
+
+
+func _on_time_manager_update_date():
+	date_label.text = $time_manager.current_date
 	pass # Replace with function body.

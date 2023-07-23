@@ -42,7 +42,7 @@ enum ResourceType {
 @export var destination_distance: float ## distance between lorry and destination
 
 @export_category("Monetary")
-@export var cost_per_distance: float = 1.0
+@export var cost_per_distance: float = 1.0 ## pay per distance unit
 
 var finish_pos = Vector2(558, 188)
 
@@ -173,13 +173,16 @@ func _process(delta):
 		going_to_city.demand_iron -= con_iron
 		going_to_city.demand_workforce -= con_workforce
 		
-		#print("lorry came: " + str(destination_distance))
 		get_player_resources().set_money(get_player_resources().get_money() + (destination_distance * cost_per_distance))
 		con_coal = 0
 		con_iron = 0
 		con_workforce = 0
 		
+		at_city_name = going_to_city.name
+		
 		status = TruckStatus.Idle
+	
+	
 	pass
 	
 func _dump_containement_data():

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8io5fefixib7"]
+
+[ext_resource type="Script" path="res://scenes/main_scenes/time_manager/time_manager.gd" id="1_moq75"]
+
+[node name="time_manager" type="Node"]
+script = ExtResource("1_moq75")
+day_interval = 2.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

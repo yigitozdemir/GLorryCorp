@@ -36,6 +36,8 @@ V0.1
 	+ 34 Load lorry statuses
 	+ 35 save city statuses
 	+ 36 load city statuses
+	+ 37 Game Time Manager (days / months / years)
+	+ 38 Simple HUD For game time manager 
 
 V0.2
 	- Multi map management

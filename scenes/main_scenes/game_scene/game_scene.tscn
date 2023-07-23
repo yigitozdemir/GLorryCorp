@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dth7k8v1v1jpg"]
+[gd_scene load_steps=15 format=3 uid="uid://dth7k8v1v1jpg"]
 
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/game_scene.gd" id="1_1vlji"]
 [ext_resource type="Texture2D" uid="uid://cieh024wdc3ai" path="res://assets/img/spritesheet.png" id="1_5mxav"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/player_resources.gd" id="2_7bn77"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/TileMap.gd" id="2_154vo"]
+[ext_resource type="PackedScene" uid="uid://b8io5fefixib7" path="res://scenes/main_scenes/time_manager/time_manager.tscn" id="2_oesa2"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/Camera2D.gd" id="2_pd0ve"]
 [ext_resource type="Script" path="res://resources/City.gd" id="3_hdiht"]
 
@@ -49,14 +50,14 @@ res_workforce = 4
 demand_coal = 0
 demand_iron = 0
 demand_workforce = 0
-producting_coal = 0
-producting_iron = 0
+producting_coal = 1
+producting_iron = 1
 producting_workforce = 1
 production_period = 2.5
 since_last_production = 0.0
-demanding_coal = 0
-demanding_iron = 0
-demanding_workforce = 0
+demanding_coal = 1
+demanding_iron = 1
+demanding_workforce = 1
 demanding_period = 1.5
 since_last_demand = 0.0
 
@@ -71,13 +72,13 @@ res_workforce = 2
 demand_coal = 0
 demand_iron = 1
 demand_workforce = 0
-producting_coal = 0
+producting_coal = 1
 producting_iron = 1
-producting_workforce = 0
+producting_workforce = 1
 production_period = 2.5
 since_last_production = 0.0
-demanding_coal = 0
-demanding_iron = 0
+demanding_coal = 1
+demanding_iron = 1
 demanding_workforce = 1
 demanding_period = 1.5
 since_last_demand = 0.0
@@ -94,17 +95,17 @@ demand_coal = 1
 demand_iron = 2
 demand_workforce = 1
 producting_coal = 1
-producting_iron = 0
+producting_iron = 1
 producting_workforce = 0
 production_period = 1.5
 since_last_production = 0.0
-demanding_coal = 0
+demanding_coal = 1
 demanding_iron = 1
-demanding_workforce = 0
+demanding_workforce = 1
 demanding_period = 2.5
 since_last_demand = 0.0
 
-[node name="game_scene" type="Node2D" node_paths=PackedStringArray("res_coal_label", "res_iron_label", "res_wf_label", "dem_coal_label", "dem_iron_label", "dem_wf_label", "menu_container", "save_file_dialog", "open_file_dialog", "container_lorry")]
+[node name="game_scene" type="Node2D" node_paths=PackedStringArray("res_coal_label", "res_iron_label", "res_wf_label", "dem_coal_label", "dem_iron_label", "dem_wf_label", "menu_container", "save_file_dialog", "open_file_dialog", "date_label", "container_lorry")]
 script = ExtResource("1_1vlji")
 res_coal_label = NodePath("ui_canvas/city_menu/city_menu/Resources/res_con/coal/Label")
 res_iron_label = NodePath("ui_canvas/city_menu/city_menu/Resources/res_con/iron/Label")
@@ -115,7 +116,10 @@ dem_wf_label = NodePath("ui_canvas/city_menu/city_menu/Resources/dem_con/workfoc
 menu_container = NodePath("ui_canvas/menu_container")
 save_file_dialog = NodePath("ui_canvas/save_file_dialog")
 open_file_dialog = NodePath("ui_canvas/open_file_dialog")
+date_label = NodePath("ui_canvas/CenterContainer/Label")
 container_lorry = NodePath("container_lorry")
+
+[node name="time_manager" parent="." instance=ExtResource("2_oesa2")]
 
 [node name="player_resources" type="Node" parent="." node_paths=PackedStringArray("money_val_label", "token_val_label")]
 script = ExtResource("2_7bn77")
@@ -358,6 +362,18 @@ access = 1
 root_subfolder = "saves"
 filters = PackedStringArray("*.sav")
 
+[node name="CenterContainer" type="CenterContainer" parent="ui_canvas"]
+offset_top = 603.0
+offset_right = 1153.0
+offset_bottom = 645.0
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="ui_canvas/CenterContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "date"
+
+[connection signal="update_date" from="time_manager" to="." method="_on_time_manager_update_date"]
 [connection signal="button_up" from="ui_canvas/city_menu/top_container/btn_close" to="." method="_on_btn_close_button_up"]
 [connection signal="button_up" from="ui_canvas/city_menu/city_menu/Resources/buy_menu/buy_lorry/buy_lorry_1" to="." method="_buy_lorry_button_event_handler" binds= ["Lorry1"]]
 [connection signal="button_up" from="ui_canvas/city_menu/city_menu/Resources/buy_menu/second_lorry/buy_saff_ultra1" to="." method="_buy_lorry_button_event_handler" binds= ["Ultra1"]]
