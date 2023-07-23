@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dth7k8v1v1jpg"]
+[gd_scene load_steps=16 format=3 uid="uid://dth7k8v1v1jpg"]
 
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/game_scene.gd" id="1_1vlji"]
 [ext_resource type="Texture2D" uid="uid://cieh024wdc3ai" path="res://assets/img/spritesheet.png" id="1_5mxav"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/TileMap.gd" id="2_154vo"]
 [ext_resource type="PackedScene" uid="uid://b8io5fefixib7" path="res://scenes/main_scenes/time_manager/time_manager.tscn" id="2_oesa2"]
 [ext_resource type="Script" path="res://scenes/main_scenes/game_scene/Camera2D.gd" id="2_pd0ve"]
+[ext_resource type="PackedScene" uid="uid://04yynm2jnka6" path="res://scenes/main_scenes/ledger/ledger.tscn" id="2_y6l7s"]
 [ext_resource type="Script" path="res://resources/City.gd" id="3_hdiht"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_e275a"]
@@ -118,6 +119,8 @@ save_file_dialog = NodePath("ui_canvas/save_file_dialog")
 open_file_dialog = NodePath("ui_canvas/open_file_dialog")
 date_label = NodePath("ui_canvas/CenterContainer/Label")
 container_lorry = NodePath("container_lorry")
+
+[node name="ledger" parent="." instance=ExtResource("2_y6l7s")]
 
 [node name="time_manager" parent="." instance=ExtResource("2_oesa2")]
 

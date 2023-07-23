@@ -38,6 +38,9 @@ V0.1
 	+ 36 load city statuses
 	+ 37 Game Time Manager (days / months / years)
 	+ 38 Simple HUD For game time manager 
+	- Create a data structure to add accounting ledger
+	- Create a simple UI for ledger to list income and expense
+
 
 V0.2
 	- Multi map management

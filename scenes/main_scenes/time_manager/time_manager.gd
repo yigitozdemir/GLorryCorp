@@ -1,4 +1,5 @@
 extends Node
+class_name time_manager
 
 @export var day_interval: float
 const SECONDS_PER_DAY: int = 60 * 60 * 24
