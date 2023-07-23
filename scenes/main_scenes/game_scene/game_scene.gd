@@ -16,10 +16,17 @@ var _selected_city: City = null: get = get_selected_city, set = set_selected_cit
 @export var save_file_dialog: FileDialog
 @export var open_file_dialog: FileDialog
 @export var date_label: Label
+@export var ledger_container: VBoxContainer
+@export var expense_container: VBoxContainer
+@export var income_container: VBoxContainer
 
 @export_category("Container References")
 @export var container_lorry: Node2D
-
+@export var ledger: ledger
+enum ChangeType {
+	Income=1,
+	Expense=2
+}
 func buy_lorry(modal_name: String, to_location: City) -> void:
 	var lorry_scene_path = Catalog.LorryList[modal_name]
 	var loaded_lorry_scene = load(lorry_scene_path)
@@ -210,3 +217,26 @@ func _on_open_file_dialog_file_selected(path):
 func _on_time_manager_update_date():
 	date_label.text = $time_manager.current_date
 	pass # Replace with function body.
+
+
+func _on_btn_ledger_button_up():
+	for data in ledger.get_data():
+		if data.ie == ChangeType.Income:
+			var lbl = Label.new()
+			lbl.text = data.date + ", +" + str(data.amount)
+			income_container.add_child(lbl)
+			pass
+		if data.ie == ChangeType.Expense:
+			var lbl = Label.new()
+			lbl.text = data.date + ", -" + str(data.amount)
+			expense_container.add_child(lbl)
+			pass 
+	ledger_container.show()
+	pass
+func _on_close_ledger_container_button_up():
+	for c in expense_container.get_children():
+		c.queue_free()
+	for c in income_container.get_children():
+		c.queue_free()
+	ledger_container.hide()
+	pass
