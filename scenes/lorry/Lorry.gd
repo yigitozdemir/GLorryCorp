@@ -30,6 +30,11 @@ enum ResourceType {
 @export var status: TruckStatus = TruckStatus.Idle
 @export var speed: float = 2
 @export var cost: int = 100
+@export var total_kilometers: float = 0
+
+@export_category("Errors")
+## car breakdown possibility on each frame
+@export var breakdown_possibility = 0.1
 
 @export_category("Containing resources")
 @export var con_coal: int
@@ -45,6 +50,7 @@ enum ResourceType {
 @export var cost_per_distance: float = 1.0 ## pay per distance unit
 
 var finish_pos = Vector2(558, 188)
+@onready var random: RandomNumberGenerator = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -168,10 +174,16 @@ func _process(delta):
 		nav_agent.set_velocity(new_velocity)
 		_on_nav_agent_velocity_computed(new_velocity)
 		
+		var rnd = random.randf()
+		if rnd < breakdown_possibility:
+			print("this is broken")
+		
 	if status == TruckStatus.Dumping:
 		going_to_city.demand_coal -= con_coal
 		going_to_city.demand_iron -= con_iron
 		going_to_city.demand_workforce -= con_workforce
+		
+		total_kilometers += destination_distance
 		
 		get_player_resources().set_money(get_player_resources().get_money() + (destination_distance * cost_per_distance))
 		con_coal = 0

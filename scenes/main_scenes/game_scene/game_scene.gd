@@ -42,6 +42,7 @@ func buy_lorry(modal_name: String, to_location: City) -> void:
 	container_lorry.add_child(lorry_instance)
 	hide_city_menu()
 func _process(_delta):
+	Engine.time_scale = 4
 	# update res & demand amounts on screen live
 	if $ui_canvas/city_menu.visible:
 		res_coal_label.text = str(get_selected_city().res_coal)
@@ -129,6 +130,7 @@ func _on_save_file_dialog_file_selected(path):
 			"pos_y": l.position.y,
 			"nav_pos_x": l.get_node("nav_agent").target_position.x,
 			"nav_pos_y": l.get_node("nav_agent").target_position.y,
+			"total_kilometers": l.total_kilometers
 		}
 		save_data.data.lorries.append(lorry_data)
 		pass
@@ -188,6 +190,7 @@ func _on_open_file_dialog_file_selected(path):
 		lorry_instance.get_node("nav_agent").target_position = Vector2(l.nav_pos_x, l.nav_pos_y)
 		lorry_instance.status = l.Status
 		lorry_instance.going_to_city = $map.get_city_by_name(l.going_to_city_name)
+		lorry_instance.total_kilometers = l.total_kilometers
 		$container_lorry.add_child(lorry_instance)
 	for c in data.cities:
 		var city: City = $map.get_city_by_name(c.name)
@@ -220,18 +223,17 @@ func _on_time_manager_update_date():
 
 
 func _on_btn_ledger_button_up():
-	for data in ledger.get_data():
-		if data.ie == ChangeType.Income:
-			var lbl = Label.new()
-			lbl.text = data.date + ", +" + str(data.amount)
-			income_container.add_child(lbl)
-			pass
-		if data.ie == ChangeType.Expense:
-			var lbl = Label.new()
-			lbl.text = data.date + ", -" + str(data.amount)
-			expense_container.add_child(lbl)
-			pass 
-	ledger_container.show()
+	if not ledger_container.visible:
+		for data in ledger.get_data():
+			if data.ie == ChangeType.Income:
+				var lbl = Label.new()
+				lbl.text = data.date + ", +" + str(data.amount)
+				income_container.add_child(lbl)
+			if data.ie == ChangeType.Expense:
+				var lbl = Label.new()
+				lbl.text = data.date + ", -" + str(data.amount)
+				expense_container.add_child(lbl)
+		ledger_container.show()
 	pass
 func _on_close_ledger_container_button_up():
 	for c in expense_container.get_children():

@@ -6,7 +6,7 @@ class_name ledger
 
 ## add new accounting data to existing entries
 func add_entry(new_entry) -> void:
-	print("New Entry: " + str (new_entry))
+	#print("New Entry: " + str (new_entry))
 	_data.append(new_entry)
 	pass
 func get_data() -> Array:

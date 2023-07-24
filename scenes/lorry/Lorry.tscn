@@ -16,6 +16,7 @@ year = 1982
 type = 1
 capacity = 12
 speed = 10.0
+breakdown_possibility = 0.002
 
 [node name="nav_agent" type="NavigationAgent2D" parent="."]
 path_desired_distance = 4.0

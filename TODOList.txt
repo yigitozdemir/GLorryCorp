@@ -40,9 +40,17 @@ V0.1
 	+ 38 Simple HUD For game time manager 
 	+ 39 Create a data structure to add accounting ledger
 	+ 40 Create a simple UI for ledger to list income and expense
+	+ 41 Lorry total kilometer variable and add driven distance to total kilometer
+	+ 42 Add total kilometers data to save
+	+ 43 Lorry breakdown possibilities
+	- 44 Add lorry broken state (it stops)
+	- Add a clickable interface to lorry
+	- Sample lorry UI
+	- Fix button for broken lorry
 
 
 V0.2
+	- Driver incident possibilities
 	- Multi map management
 	- Mouse scroll button drag camera
 V0.3
