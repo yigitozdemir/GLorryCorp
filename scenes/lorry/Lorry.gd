@@ -4,6 +4,8 @@ class_name Lorry
 @onready var nav_agent: NavigationAgent2D = get_node("nav_agent")
 ## TileMap of the game
 @onready var map: TileMap = _get_tilemap()
+## if mouse hovers the object
+var mouse_hover: bool = false
 
 enum TruckStatus {
 	Idle,
@@ -219,3 +221,17 @@ func _on_nav_agent_navigation_finished():
 ## get player resources global object
 func get_player_resources() -> player_resources:
 	return get_tree().root.get_node("game_scene").get_node("player_resources")
+
+
+func _on_area_mouse_entered():
+	mouse_hover = true
+	pass 
+func _on_area_mouse_exited():
+	mouse_hover = false
+	pass 
+
+func _on_area_input_event(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		if event.is_released():
+			print("clicked to lorry")
+	pass
