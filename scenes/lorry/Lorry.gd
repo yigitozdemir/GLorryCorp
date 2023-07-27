@@ -12,7 +12,8 @@ enum TruckStatus {
 	Loading,
 	CalculatingDemand,
 	Moving,
-	Dumping
+	Dumping,
+	Broken
 }
 
 enum ResourceType {
@@ -81,7 +82,8 @@ func set_target(target_position: Vector2) -> void:
 		print(c)
 	pass
 
-## idle -> loading -> CalculatingDemand -> moving -> dumping -> idle
+
+## idle -> loading -> CalculatingDemand -> moving (-> broken ->) -> dumping -> idle
 ## states will switch in this circles
 func _process(delta):
 	#nav_agent.get_next_path_position()
@@ -178,8 +180,12 @@ func _process(delta):
 		
 		var rnd = random.randf()
 		if rnd < breakdown_possibility:
+			status = TruckStatus.Broken
 			print("this is broken")
-		
+	
+	if status == TruckStatus.Broken:
+		pass
+	
 	if status == TruckStatus.Dumping:
 		going_to_city.demand_coal -= con_coal
 		going_to_city.demand_iron -= con_iron

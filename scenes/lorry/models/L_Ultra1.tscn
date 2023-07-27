@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://5xd36m2vpr7s"]
+[gd_scene load_steps=5 format=3 uid="uid://5xd36m2vpr7s"]
 
 [ext_resource type="Script" path="res://scenes/lorry/Lorry.gd" id="1_6ib36"]
 [ext_resource type="Texture2D" uid="uid://cieh024wdc3ai" path="res://assets/img/spritesheet.png" id="2_6j3hv"]
@@ -6,6 +6,9 @@
 [sub_resource type="AtlasTexture" id="AtlasTexture_y08lc"]
 atlas = ExtResource("2_6j3hv")
 region = Rect2(248, 0, 8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rp8na"]
+size = Vector2(8, 8)
 
 [node name="Lorry" type="Node2D"]
 script = ExtResource("1_6ib36")
@@ -29,5 +32,13 @@ avoidance_mask = 0
 [node name="sprite" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_y08lc")
 
+[node name="area" type="Area2D" parent="."]
+
+[node name="collision_shape" type="CollisionShape2D" parent="area"]
+shape = SubResource("RectangleShape2D_rp8na")
+
 [connection signal="navigation_finished" from="nav_agent" to="." method="_on_nav_agent_navigation_finished"]
 [connection signal="velocity_computed" from="nav_agent" to="." method="_on_nav_agent_velocity_computed"]
+[connection signal="input_event" from="area" to="." method="_on_area_input_event"]
+[connection signal="mouse_entered" from="area" to="." method="_on_area_mouse_entered"]
+[connection signal="mouse_exited" from="area" to="." method="_on_area_mouse_exited"]
