@@ -106,7 +106,7 @@ demanding_workforce = 1
 demanding_period = 2.5
 since_last_demand = 0.0
 
-[node name="game_scene" type="Node2D" node_paths=PackedStringArray("res_coal_label", "res_iron_label", "res_wf_label", "dem_coal_label", "dem_iron_label", "dem_wf_label", "menu_container", "save_file_dialog", "open_file_dialog", "date_label", "ledger_container", "expense_container", "income_container", "container_lorry", "ledger")]
+[node name="game_scene" type="Node2D" node_paths=PackedStringArray("res_coal_label", "res_iron_label", "res_wf_label", "dem_coal_label", "dem_iron_label", "dem_wf_label", "menu_container", "save_file_dialog", "open_file_dialog", "date_label", "ledger_container", "expense_container", "income_container", "lorry_menu_container", "container_lorry", "ledger")]
 script = ExtResource("1_1vlji")
 res_coal_label = NodePath("ui_canvas/city_menu/city_menu/Resources/res_con/coal/Label")
 res_iron_label = NodePath("ui_canvas/city_menu/city_menu/Resources/res_con/iron/Label")
@@ -121,6 +121,7 @@ date_label = NodePath("ui_canvas/CenterContainer/Label")
 ledger_container = NodePath("ui_canvas/ledger_container")
 expense_container = NodePath("ui_canvas/ledger_container/scrolls/sc_ex/expense_container")
 income_container = NodePath("ui_canvas/ledger_container/scrolls/sc_in/income_container")
+lorry_menu_container = NodePath("ui_canvas/loryy_menu_container")
 container_lorry = NodePath("container_lorry")
 ledger = NodePath("ledger")
 
@@ -416,6 +417,20 @@ horizontal_scroll_mode = 3
 [node name="income_container" type="VBoxContainer" parent="ui_canvas/ledger_container/scrolls/sc_in"]
 layout_mode = 2
 
+[node name="loryy_menu_container" type="VBoxContainer" parent="ui_canvas"]
+visible = false
+offset_left = 192.0
+offset_top = 107.0
+offset_right = 480.0
+offset_bottom = 349.0
+
+[node name="btn_lorry_fix" type="Button" parent="ui_canvas/loryy_menu_container"]
+layout_mode = 2
+text = "Fix Lorry"
+
+[node name="btt_lorry_close" type="Button" parent="ui_canvas/loryy_menu_container"]
+layout_mode = 2
+
 [connection signal="update_date" from="time_manager" to="." method="_on_time_manager_update_date"]
 [connection signal="button_up" from="ui_canvas/city_menu/top_container/btn_close" to="." method="_on_btn_close_button_up"]
 [connection signal="button_up" from="ui_canvas/city_menu/city_menu/Resources/buy_menu/buy_lorry/buy_lorry_1" to="." method="_buy_lorry_button_event_handler" binds= ["Lorry1"]]
@@ -430,3 +445,5 @@ layout_mode = 2
 [connection signal="file_selected" from="ui_canvas/open_file_dialog" to="." method="_on_open_file_dialog_file_selected"]
 [connection signal="ready" from="ui_canvas/open_file_dialog" to="." method="_on_open_file_dialog_ready"]
 [connection signal="button_up" from="ui_canvas/ledger_container/close_ledger_container" to="." method="_on_close_ledger_container_button_up"]
+[connection signal="button_up" from="ui_canvas/loryy_menu_container/btn_lorry_fix" to="." method="_on_btn_lorry_fix_button_up"]
+[connection signal="button_up" from="ui_canvas/loryy_menu_container/btt_lorry_close" to="." method="_on_btt_lorry_close_button_up"]

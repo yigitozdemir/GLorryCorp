@@ -239,5 +239,11 @@ func _on_area_mouse_exited():
 func _on_area_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.is_released():
-			print("clicked to lorry")
+			set_selected_lorry()
+			#print("clicked to lorry")
+	pass
+
+func set_selected_lorry():
+	get_tree().root.get_node("game_scene").set_selected_lorry(self)
+	get_tree().root.get_node("game_scene").show_lorry_menu()
 	pass
