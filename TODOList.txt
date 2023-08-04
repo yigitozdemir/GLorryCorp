@@ -45,8 +45,8 @@ V0.1
 	+ 43 Lorry breakdown possibilities
 	+ 44 Add lorry broken state (it stops)
 	+ 45 Add a clickable interface to lorry
-	- 46 Sample lorry UI
-	- 47 Fix button for broken lorry
+	+ 46 Sample lorry UI
+	+ 47 Fix button for broken lorry
 
 
 V0.2

@@ -180,6 +180,8 @@ func _process(delta):
 		
 		var rnd = random.randf()
 		if rnd < breakdown_possibility:
+			print("Random: " + str(rnd))
+			print("Pos: " + str(breakdown_possibility))
 			status = TruckStatus.Broken
 			print("this is broken")
 	

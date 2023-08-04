@@ -419,10 +419,10 @@ layout_mode = 2
 
 [node name="loryy_menu_container" type="VBoxContainer" parent="ui_canvas"]
 visible = false
-offset_left = 192.0
-offset_top = 107.0
-offset_right = 480.0
-offset_bottom = 349.0
+offset_left = 412.0
+offset_top = 158.0
+offset_right = 700.0
+offset_bottom = 400.0
 
 [node name="btn_lorry_fix" type="Button" parent="ui_canvas/loryy_menu_container"]
 layout_mode = 2
@@ -430,6 +430,7 @@ text = "Fix Lorry"
 
 [node name="btt_lorry_close" type="Button" parent="ui_canvas/loryy_menu_container"]
 layout_mode = 2
+text = "Close"
 
 [connection signal="update_date" from="time_manager" to="." method="_on_time_manager_update_date"]
 [connection signal="button_up" from="ui_canvas/city_menu/top_container/btn_close" to="." method="_on_btn_close_button_up"]
